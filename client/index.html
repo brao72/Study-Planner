@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Study Planner – Tasks</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- ───────── NAV ───────── -->
+  <nav>
+    <a href="index.html">📋 Tasks</a>
+    <a href="calendar.html">📅 Calendar</a>
+    <a href="analytics.html">📊 Analytics</a>
+  </nav>
+
+  <h1>📚 Study Planner</h1>
+
+  <!-- ───────── INPUT BAR ───────── -->
+  <section id="task-input">
+    <input type="text" id="task-title" placeholder="Task Title" />
+    <input type="date" id="task-date" />
+    <button onclick="addTask()">Add Task</button>
+  </section>
+
+  <!-- ───────── KANBAN ───────── -->
+  <section id="kanban">
+    <div class="column" data-status="backlog" ondragover="allowDrop(event)" ondrop="onDrop(event, 'backlog')">
+      <h2>Backlog</h2>
+      <div class="task-list" id="backlog"></div>
+    </div>
+    <div class="column" data-status="in-progress" ondragover="allowDrop(event)" ondrop="onDrop(event, 'in-progress')">
+      <h2>In Progress</h2>
+      <div class="task-list" id="in-progress"></div>
+    </div>
+    <div class="column" data-status="done" ondragover="allowDrop(event)" ondrop="onDrop(event, 'done')">
+      <h2>Done</h2>
+      <div class="task-list" id="done"></div>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+:root {
+  /* colour palette */
+  --backlog     : #7f8c8d;
+  --inprogress  : #f39c12;
+  --done        : #2ecc71;
+  --bg          : #f0f2f5;
+  --card-bg     : #fff;
+  --nav-bg      : #4a90e2;
+}
+
+/* reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ---------- base ---------- */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: var(--bg);
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin: 20px 0;
+}
+
+/* ---------- navigation ---------- */
+nav {
+  background: var(--nav-bg);
+  padding: 10px;
+  text-align: center;
+  border-radius: 6px;
+}
+nav a {
+  color: #fff;
+  margin: 0 20px;
+  text-decoration: none;
+  font-weight: 600;
+}
+nav a:hover { text-decoration: underline; }
+
+/* ---------- task input ---------- */
+#task-input {
+  text-align: center;
+  margin: 20px 0;
+}
+#task-input input,
+#task-input button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+/* ---------- kanban board ---------- */
+#kanban {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+.column {
+  flex: 1 1 300px;
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+.column h2 {
+  text-align: center;
+  color: #444;
+  margin-top: 0;
+}
+.task-list { flex: 1; }
+
+/* ---------- task cards ---------- */
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  margin: 8px 0;
+  background: var(--card-bg);
+  border-left: 6px solid var(--backlog);
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  cursor: grab;
+  user-select: none;
+}
+.task.backlog     { border-left-color: var(--backlog);    }
+.task.in-progress { border-left-color: var(--inprogress); }
+.task.done        { border-left-color: var(--done);       }
+
+.task span   { flex: 1; }
+.task small  { font-size: .75em; color:#666; }
+.task .delete {
+  border: none;
+  background: none;
+  color: #aaa;
+  font-size: 14px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+}
+.task .delete:hover { color: #e74c3c; }
+
+/* ---------- calendar view ---------- */
+#calHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 5px;
+}
+#calHeader h1     { margin: 0; font-size: 1.6rem; }
+#calHeader button { padding: 4px 10px; font-size: 1rem; }
+#yearSelect       { padding: 4px 6px; }
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  height: calc(100vh - 210px); /* nav + header + breathing room */
+}
+.day {
+  background: var(--card-bg);
+  border-radius: 6px;
+  padding: 6px;
+  position: relative;
+  cursor: pointer;
+}
+.day.dim   { opacity: .4; }
+.day.today { outline: 3px solid var(--nav-bg); }
+.dots {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  color: var(--nav-bg);
+}
+
+/* ---------- modal ---------- */
+#modal.hidden { display: none; }
+#modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  min-width: 250px;
+  max-height: 80vh;
+  overflow: auto;
+  position: relative;
+}
+#closeModal {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+
+/* ---------- analytics ---------- */
+/* Canvas height is set inline in analytics.html, but keep responsive ratio */
+#weekChart {
+  width: 100%;
+}
+
+/* ---------- responsive tweaks ---------- */
+@media (max-width: 768px) {
+  #kanban { flex-direction: column; }
+  #calendar { height: auto; }
+}

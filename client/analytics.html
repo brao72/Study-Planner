@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Analytics – Study Planner</title>
+
+  <!-- main stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Chart.js from CDN (UMD build) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- page-specific logic -->
+  <script defer src="analytics.js"></script>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">📋 Tasks</a>
+    <a href="calendar.html">📅 Calendar</a>
+    <a href="analytics.html">📊 Analytics</a>
+  </nav>
+
+  <h1>8-Week Completion Trend</h1>
+
+  <!-- wide, tall canvas -->
+  <canvas id="weekChart" style="width:100%; height:80vh;"></canvas>
+
+</body>
+</html>

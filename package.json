@@ -1,0 +1,17 @@
+{
+  "name": "study-planner",
+  "version": "1.0.0",
+  "type": "module", 
+  "scripts": {
+    "start": "node server/index.js",
+    "dev":   "nodemon server/index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.11.4",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
