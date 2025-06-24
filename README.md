@@ -47,7 +47,7 @@ Kanban board ➜ Calendar view ➜ 8-week analytics — all synced in PostgreSQL
 
 ### 1 Clone & install
 ```bash
-git clone https://github.com/<your-username>/study-planner.git
+git clone https://github.com/brao72/study-planner.git
 cd study-planner
 npm install
 ```
@@ -61,7 +61,7 @@ psql studyplanner_db -f server/schema.sql   # table = tasks
 ```
 ### 3 Environment file
 ```bash
-# .env  (DO NOT commit!)
+# .env  
 DATABASE_URL=postgresql://studyplanner_admin@localhost:5432/studyplanner_db
 PORT=3000   # optional
 ```
